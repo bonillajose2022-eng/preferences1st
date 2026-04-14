@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expressing Preferences | Grade 1 English</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --green:#2ECC71; --green-dk:#27AE60;
+  --red:#E74C3C;   --red-dk:#C0392B;
+  --purple:#9B59B6;--purple-dk:#7D3C98;
+  --orange:#E67E22;--blue:#3498DB;
+  --teal:#1ABC9C;  --yellow:#F1C40F;
+  --pink:#FF6B9D;
+  --bg:#FFF9F0;    --white:#FFFFFF;
+  --text:#2C3E50;  --text-lt:#7F8C8D;
+  --shadow:0 6px 20px rgba(0,0,0,0.12);
+  --shadow-lg:0 10px 35px rgba(0,0,0,0.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* SCROLL FADE */
+.section{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;padding:4rem 1.5rem;max-width:1100px;margin:0 auto}
+.section.visible{opacity:1;transform:translateY(0)}
+.welcome-section{opacity:1;transform:none}
+.en-text{color:#1A5276} .es-text{color:#7B241C;font-style:italic}
+
+/* NAVBAR */
+.navbar{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:space-between;padding:.7rem 1.5rem;box-shadow:0 4px 15px rgba(0,0,0,.25)}
+.nav-logo{font-family:'Fredoka One',cursive;color:#fff;font-size:1.4rem}
+.nav-toggle{display:none;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:1.5rem;border-radius:8px;padding:.2rem .5rem;cursor:pointer}
+.nav-links{display:flex;list-style:none;gap:.3rem;flex-wrap:wrap}
+.nav-links a{color:rgba(255,255,255,.9);text-decoration:none;font-weight:700;font-size:.8rem;padding:.35rem .65rem;border-radius:8px;transition:background .2s;white-space:nowrap}
+.nav-links a:hover{background:rgba(255,255,255,.25);color:#fff}
+
+/* WELCOME */
+.welcome-section{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#a8edea,#fed6e3 50%,#ffecd2);overflow:hidden;max-width:100%;padding:3rem 1.5rem}
+.stars-bg{position:absolute;inset:0;pointer-events:none}
+.star{position:absolute;animation:floatStar 6s ease-in-out infinite;opacity:.5}
+.s1{top:8%;left:5%;font-size:1.5rem;animation-delay:0s}.s2{top:15%;right:8%;font-size:2.2rem;animation-delay:1s}
+.s3{top:70%;left:3%;font-size:1.8rem;animation-delay:2s}.s4{top:80%;right:5%;font-size:1.4rem;animation-delay:.5s}
+.s5{top:45%;left:2%;font-size:2rem;animation-delay:1.5s}.s6{top:30%;right:2%;font-size:1.6rem;animation-delay:2.5s}
+@keyframes floatStar{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-18px) rotate(15deg)}}
+.welcome-content{position:relative;z-index:1;text-align:center;max-width:720px}
+.mascot{font-size:5rem;display:inline-block;animation:bounce 2s ease-in-out infinite;margin-bottom:1rem}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.main-title{font-family:'Fredoka One',cursive;line-height:1.1;margin-bottom:1.5rem}
+.title-line1{display:block;font-size:clamp(2rem,6vw,4rem);color:#764ba2;text-shadow:3px 3px 0 rgba(0,0,0,.1)}
+.title-line2{display:block;font-size:clamp(2.4rem,7vw,5rem);background:linear-gradient(135deg,#f093fb,#f5576c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.title-emoji{font-size:2.5rem;display:inline-block;animation:spin 3s linear infinite}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.welcome-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+.bilingual-card{background:rgba(255,255,255,.85);border-radius:24px;padding:1.2rem;box-shadow:var(--shadow);text-align:left;font-size:.95rem}
+.lang-badge{display:inline-block;padding:.25rem .75rem;border-radius:20px;font-weight:800;font-size:.85rem;margin-bottom:.5rem}
+.eng-badge{background:#1A5276;color:#fff} .esp-badge{background:#CB4335;color:#fff}
+.big-btn{display:inline-block;font-family:'Fredoka One',cursive;font-size:1.4rem;color:#fff;background:linear-gradient(135deg,#f093fb,#f5576c);padding:1rem 2.5rem;border-radius:50px;text-decoration:none;box-shadow:0 8px 25px rgba(245,87,108,.4);border:none;cursor:pointer;animation:pulse 2s ease-in-out infinite;margin-top:1rem}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+
+/* SECTION HEADERS */
+.section-header{text-align:center;margin-bottom:2.5rem}
+.section-title{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.6rem}
+.section-subtitle{font-size:1.05rem;color:var(--text-lt);line-height:1.9}
+
+/* GRAMMAR CARDS */
+.grammar-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem}
+.grammar-card{background:var(--white);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s}
+.grammar-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.card-banner{padding:1rem 1.2rem;text-align:center}
+.green-b{background:linear-gradient(135deg,#2ECC71,#27AE60)} .red-b{background:linear-gradient(135deg,#E74C3C,#C0392B)}
+.purple-b{background:linear-gradient(135deg,#9B59B6,#7D3C98)} .orange-b{background:linear-gradient(135deg,#E67E22,#CA6F1E)}
+.structure-txt{font-family:'Fredoka One',cursive;font-size:1.6rem;color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,.2)}
+.card-meaning{padding:.6rem 1.2rem;background:#f9f9f9;border-bottom:2px dashed #eee;text-align:center;font-weight:700;color:var(--blue);font-size:1rem}
+.examples-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;padding:.8rem 1rem}
+.ex-item{display:flex;flex-direction:column;align-items:center;background:#f4f6f7;border-radius:12px;padding:.6rem .4rem;text-align:center;transition:background .2s}
+.ex-item:hover{background:#eaf0fb}
+.ex-em{font-size:1.8rem;display:block;margin-bottom:.2rem}
+.ex-tx{font-size:.8rem;font-weight:700}
+.listen-mini{display:block;width:calc(100% - 2rem);margin:0 1rem 1rem;padding:.55rem;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;transition:transform .2s}
+.listen-mini:hover{transform:scale(1.03)}
+.summary-box{background:var(--white);border-radius:24px;padding:1.5rem;box-shadow:var(--shadow)}
+.summary-box h3{font-family:'Fredoka One',cursive;font-size:1.3rem;margin-bottom:1rem}
+.summary-table-wrap{overflow-x:auto}
+.summary-table{width:100%;border-collapse:collapse;font-size:.95rem;min-width:380px}
+.summary-table th{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:.75rem 1rem;text-align:left;font-family:'Fredoka One',cursive;font-size:1rem}
+.summary-table td{padding:.7rem 1rem;border-bottom:1px solid #eee}
+.row-like{background:#EAFAF1} .row-dontlike{background:#FDEDEC}
+.row-love{background:#F5EEF8} .row-dontlove{background:#FEF9E7}
+
+/* VIDEOS */
+.videos-section{background:linear-gradient(160deg,#ffecd2,#fcb69f)}
+.videos-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.video-card{background:rgba(255,255,255,.9);border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);transition:transform .3s}
+.video-card:hover{transform:translateY(-5px)}
+.video-label{padding:1rem 1.2rem}
+.video-badge{display:inline-block;background:linear-gradient(135deg,#f093fb,#f5576c);color:#fff;font-family:'Fredoka One',cursive;padding:.3rem 1rem;border-radius:50px;margin-bottom:.5rem}
+.video-desc{font-size:.9rem;line-height:1.7}
+.video-wrap{position:relative;padding-bottom:56.25%;height:0}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+
+/* READING */
+.reading-section{background:var(--bg)}
+.story-card{display:flex;gap:1.5rem;align-items:flex-start;background:var(--white);border-radius:24px;padding:1.5rem;box-shadow:var(--shadow);margin-bottom:2rem}
+.story-char{font-size:5rem;flex-shrink:0;animation:bounce 2.5s ease-in-out infinite}
+.story-bubble{flex:1;background:#EBF5FB;border-radius:18px;padding:1.2rem}
+.story-bubble h3{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--blue);margin-bottom:.7rem}
+.story-txt{font-size:1rem;line-height:2.1}
+.listen-btn{margin-top:1rem;background:linear-gradient(135deg,#43e97b,#38f9d7);color:var(--text);border:none;border-radius:50px;padding:.6rem 1.4rem;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;transition:transform .2s}
+.listen-btn:hover{transform:scale(1.05)}
+.comprehension-box{background:var(--white);border-radius:24px;padding:1.5rem;box-shadow:var(--shadow)}
+.comprehension-box h3{font-family:'Fredoka One',cursive;font-size:1.4rem;margin-bottom:1.2rem}
+.reading-q{background:#F8F9FA;border-radius:18px;padding:1.1rem;margin-bottom:1rem;border-left:5px solid var(--teal)}
+.q-text{font-size:1rem;font-weight:700;margin-bottom:.8rem}
+.choice-row,.img-row{display:flex;gap:.7rem;flex-wrap:wrap}
+.c-btn{padding:.6rem 1.2rem;border-radius:50px;border:3px solid #ddd;background:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
+.c-btn:hover{border-color:var(--blue);background:#EBF5FB}
+.c-btn:disabled{cursor:default}
+.c-btn.correct{background:#D5F5E3;border-color:var(--green);color:#1A6830}
+.c-btn.wrong{background:#FADBD8;border-color:var(--red);color:#922B21}
+.img-btn{display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.8rem 1.2rem;border-radius:12px;border:3px solid #ddd;background:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .2s}
+.img-btn:hover{border-color:var(--blue)}
+.img-btn.correct{background:#D5F5E3;border-color:var(--green)}
+.img-btn.wrong{background:#FADBD8;border-color:var(--red)}
+.big-em{font-size:2.5rem}
+.fb-box{margin-top:.6rem;font-size:.9rem;font-weight:700;min-height:1.4rem}
+.fb-ok{color:var(--green-dk)} .fb-err{color:var(--red-dk)}
+
+/* TRUE/FALSE SECTION */
+.tf-section{background:linear-gradient(160deg,#fdfcfb,#e2d1c3)}
+.tf-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.tf-card{background:var(--white);border-radius:20px;padding:1.2rem;box-shadow:var(--shadow);border-left:6px solid var(--yellow)}
+.tf-sentence{font-size:1rem;font-weight:700;margin-bottom:.8rem;line-height:1.6}
+.tf-btns{display:flex;gap:.7rem}
+.tf-btn{flex:1;padding:.6rem;border-radius:50px;border:3px solid #ddd;background:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;cursor:pointer;transition:all .2s}
+.tf-btn:hover{transform:scale(1.04)}
+.tf-btn.correct{background:#D5F5E3;border-color:var(--green)}
+.tf-btn.wrong{background:#FADBD8;border-color:var(--red);animation:shake .4s ease}
+.tf-btn:disabled{cursor:default}
+
+/* WORD ORDER */
+.wordorder-section{background:linear-gradient(160deg,#c3cfe2,#f5f7fa)}
+.wo-exercises{display:flex;flex-direction:column;gap:1.5rem}
+.wo-card{background:var(--white);border-radius:24px;padding:1.5rem;box-shadow:var(--shadow)}
+.wo-card h4{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--purple-dk);margin-bottom:.5rem}
+.wo-instruction{font-size:.9rem;color:var(--text-lt);margin-bottom:1rem}
+.wo-words{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1rem;min-height:48px;background:#f4f6f7;border-radius:12px;padding:.7rem;align-items:center}
+.wo-slot{display:flex;flex-wrap:wrap;gap:.6rem;min-height:52px;background:#EBF5FB;border-radius:12px;padding:.7rem;align-items:center;border:2px dashed var(--blue);margin-bottom:.8rem}
+.wo-word{padding:.45rem .9rem;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;border:3px solid #ddd;transition:all .2s;user-select:none}
+.wo-word.in-bank{background:#fff;border-color:#bbb;color:var(--text)}
+.wo-word.in-bank:hover{border-color:var(--blue);background:#EBF5FB;transform:scale(1.05)}
+.wo-word.in-slot{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-color:transparent}
+.wo-word.in-slot:hover{opacity:.85;transform:scale(1.05)}
+.wo-check{padding:.5rem 1.4rem;background:linear-gradient(135deg,#f093fb,#f5576c);color:#fff;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;transition:transform .2s}
+.wo-check:hover{transform:scale(1.05)}
+.wo-reset{padding:.5rem 1rem;background:#eee;color:var(--text);border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .2s;margin-left:.5rem}
+.wo-reset:hover{background:#ddd}
+
+/* MATCHING */
+.matching-section{background:linear-gradient(160deg,#e0c3fc,#8ec5fc)}
+.match-act{background:rgba(255,255,255,.92);border-radius:24px;padding:1.5rem;box-shadow:var(--shadow-lg);margin-bottom:2rem}
+.act-label{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--purple-dk);margin-bottom:1rem}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1rem}
+.match-col{display:flex;flex-direction:column;gap:.7rem}
+.m-item{padding:.8rem 1rem;border-radius:12px;border:3px solid #ddd;background:#fff;cursor:pointer;font-weight:700;font-size:.9rem;text-align:center;transition:all .25s;user-select:none}
+.m-item:hover{border-color:var(--purple);background:#F5EEF8;transform:scale(1.02)}
+.m-item.selected{border-color:var(--blue);background:#EBF5FB;box-shadow:0 0 0 3px rgba(52,152,219,.3)}
+.m-item.matched-ok{border-color:var(--green);background:#D5F5E3;cursor:default;animation:pop .3s ease}
+.m-item.matched-err{border-color:var(--red);background:#FADBD8;animation:shake .4s ease}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.m-emoji{font-size:2rem}
+.match-score{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--purple-dk);margin:.5rem 0}
+.reset-btn{padding:.55rem 1.4rem;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;transition:transform .2s}
+.reset-btn:hover{transform:scale(1.05)}
+.tr-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1rem}
+.tr-item{padding:.8rem;border-radius:12px;border:3px solid #ddd;background:#fff;cursor:pointer;font-weight:700;font-size:.9rem;text-align:center;transition:all .25s}
+.tr-item:hover{border-color:var(--teal);background:#E8F8F5}
+.tr-item.selected{border-color:var(--blue);background:#EBF5FB}
+.tr-item.matched-ok{border-color:var(--green);background:#D5F5E3;cursor:default}
+.tr-item.matched-err{border-color:var(--red);background:#FADBD8;animation:shake .4s ease}
+
+/* LISTENING */
+.listening-section{background:linear-gradient(160deg,#d4fc79,#96e6a1)}
+.listen-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.listen-card{background:rgba(255,255,255,.92);border-radius:24px;padding:1.3rem;box-shadow:var(--shadow);text-align:center}
+.listen-card h4{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--green-dk);margin-bottom:.8rem}
+.phrase-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;background:linear-gradient(135deg,#43e97b,#38f9d7);color:var(--text);border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;transition:transform .2s;margin-bottom:1rem;animation:pulseGreen 2.5s ease-in-out infinite}
+@keyframes pulseGreen{0%,100%{box-shadow:0 0 0 0 rgba(67,233,123,.4)}50%{box-shadow:0 0 0 10px rgba(67,233,123,0)}}
+.phrase-btn:hover{transform:scale(1.06)}
+.opts-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:.5rem}
+.opt-btn{display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.7rem 1rem;border-radius:12px;border:3px solid #ddd;background:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .2s;min-width:70px}
+.opt-btn:hover{border-color:var(--teal)}
+.opt-btn.correct{background:#D5F5E3;border-color:var(--green)}
+.opt-btn.wrong{background:#FADBD8;border-color:var(--red);animation:shake .4s ease}
+.opt-btn:disabled{cursor:default}
+.opt-em{font-size:2rem}
+.listen-score{text-align:center;font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--green-dk);background:rgba(255,255,255,.85);display:block;max-width:260px;margin:0 auto;padding:.5rem 1.5rem;border-radius:50px}
+
+/* FILL IN */
+.fillblank-section{background:var(--bg)}
+.fill-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.fill-card{background:var(--white);border-radius:24px;padding:1.3rem;box-shadow:var(--shadow)}
+.sent-area{font-size:1.05rem;font-weight:700;line-height:2.3;margin-bottom:.5rem}
+.fill-sel{padding:.35rem .6rem;border:3px solid var(--blue);border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:.95rem;background:#EBF5FB;cursor:pointer;color:var(--text);min-width:130px;vertical-align:middle}
+.fill-sel:focus{outline:none;border-color:var(--purple)}
+.check-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1.2rem;background:linear-gradient(135deg,#f093fb,#f5576c);color:#fff;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;cursor:pointer;transition:transform .2s;margin-top:.6rem}
+.check-btn:hover{transform:scale(1.05)}
+.fill-fb{margin-top:.5rem;font-size:.9rem;font-weight:700;min-height:1.2rem}
+.fill-hint{font-size:.8rem;color:#aaa;margin-top:.3rem}
+.fill-score-row{text-align:center;display:flex;align-items:center;justify-content:center;gap:1rem;font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--purple-dk)}
+
+/* QUIZ */
+.quiz-section{background:linear-gradient(160deg,#ffecd2,#fcb69f 50%,#a1c4fd)}
+.quiz-wrap{max-width:700px;margin:0 auto}
+.q-progress-bar{background:rgba(255,255,255,.5);border-radius:50px;height:14px;overflow:hidden;margin-bottom:.5rem}
+.q-progress-fill{height:100%;background:linear-gradient(90deg,#f093fb,#f5576c);border-radius:50px;transition:width .5s ease;width:0%}
+.q-progress-txt{text-align:center;font-family:'Fredoka One',cursive;font-size:1rem;margin-bottom:1.5rem}
+.q-card{background:rgba(255,255,255,.95);border-radius:24px;padding:2rem;box-shadow:var(--shadow-lg);text-align:center}
+.q-num{font-family:'Fredoka One',cursive;font-size:.9rem;color:var(--text-lt);margin-bottom:.5rem}
+.q-txt{font-family:'Fredoka One',cursive;font-size:clamp(1.1rem,3vw,1.5rem);margin-bottom:.5rem;line-height:1.4}
+.q-em{font-size:3.5rem;display:block;margin:.8rem 0;animation:bounce 1.8s ease-in-out infinite}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1rem}
+.q-opt{padding:.9rem;border-radius:18px;border:3px solid #ddd;background:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;line-height:1.4}
+.q-opt:hover{border-color:var(--blue);background:#EBF5FB;transform:scale(1.03)}
+.q-opt:disabled{cursor:default}
+.q-opt.correct{background:#D5F5E3;border-color:var(--green);color:#1A6830}
+.q-opt.wrong{background:#FADBD8;border-color:var(--red);color:#922B21;animation:shake .4s ease}
+.q-fb{margin-top:1rem;font-size:.95rem;font-weight:700;min-height:1.4rem}
+
+/* QUIZ LOCK */
+.quiz-locked-banner{background:rgba(255,255,255,.95);border-radius:24px;padding:2rem;text-align:center;box-shadow:var(--shadow-lg)}
+.lock-emoji{font-size:4rem;display:block;margin-bottom:1rem}
+.lock-title{font-family:'Fredoka One',cursive;font-size:1.8rem;color:var(--purple-dk);margin-bottom:.5rem}
+.lock-sub{font-size:1rem;color:var(--text-lt);margin-bottom:1.5rem;line-height:1.7}
+.lock-score-display{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--green-dk);background:#D5F5E3;border-radius:12px;padding:.7rem 1.5rem;display:inline-block;margin-bottom:1.5rem}
+.unlock-form{display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.unlock-label{font-weight:700;font-size:.95rem;color:var(--text)}
+.unlock-input{padding:.6rem 1rem;border:3px solid #ddd;border-radius:50px;font-family:'Nunito',sans-serif;font-size:1rem;width:220px;text-align:center;outline:none;transition:border .2s}
+.unlock-input:focus{border-color:var(--purple)}
+.unlock-btn{padding:.6rem 1.6rem;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;cursor:pointer;transition:transform .2s}
+.unlock-btn:hover{transform:scale(1.05)}
+.unlock-err{color:var(--red-dk);font-weight:700;font-size:.9rem;min-height:1.2rem}
+
+/* QUIZ RESULT */
+.q-result{background:rgba(255,255,255,.95);border-radius:24px;padding:2.5rem;text-align:center;box-shadow:var(--shadow-lg)}
+.r-emoji{font-size:5rem;display:block;margin-bottom:1rem;animation:spin 3s linear infinite}
+.r-title{font-family:'Fredoka One',cursive;font-size:2rem;margin-bottom:.5rem}
+.r-score{font-size:1.1rem;color:var(--text-lt);margin-bottom:.4rem}
+.r-msg{font-size:1.05rem;font-weight:700;margin-bottom:1.5rem;color:var(--purple-dk);line-height:1.6}
+.restart-btn{font-family:'Fredoka One',cursive;font-size:1.2rem;color:#fff;background:linear-gradient(135deg,#f093fb,#f5576c);padding:.8rem 2rem;border-radius:50px;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(245,87,108,.4);transition:transform .2s}
+.restart-btn:hover{transform:scale(1.05)}
+
+/* FOOTER */
+.site-footer{background:linear-gradient(135deg,#667eea,#764ba2);color:rgba(255,255,255,.9);text-align:center;padding:2rem 1rem;margin-top:3rem}
+.site-footer p{margin:.3rem 0;font-size:.9rem}
+.f-emoji{font-size:1.4rem;letter-spacing:.3rem}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-toggle{display:block}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:linear-gradient(135deg,#667eea,#764ba2);flex-direction:column;padding:1rem;gap:.4rem;box-shadow:0 8px 20px rgba(0,0,0,.2);z-index:999}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:1rem;padding:.6rem .8rem}
+  .welcome-cards,.grammar-grid,.videos-grid,.listen-grid,.fill-grid,.q-opts,.tr-grid,.tf-grid{grid-template-columns:1fr}
+  .match-grid{grid-template-columns:1fr}
+  .story-card{flex-direction:column;align-items:center;text-align:center}
+}
+@media(max-width:480px){
+  html{font-size:15px}
+  .section{padding:2.5rem 1rem}
+  .choice-row{flex-direction:column}
+  .opts-row{gap:.5rem}
+  .tf-btns{flex-direction:column}
+}
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-logo">&#11088; My English</div>
+  <button class="nav-toggle" id="navToggle">&#9776;</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#welcome">&#127968; Home</a></li>
+    <li><a href="#explanation">&#128218; Learn</a></li>
+    <li><a href="#videos">&#127916; Videos</a></li>
+    <li><a href="#reading">&#128214; Reading</a></li>
+    <li><a href="#truefalse">&#10003; True/False</a></li>
+    <li><a href="#wordorder">&#128297; Word Order</a></li>
+    <li><a href="#matching">&#128279; Matching</a></li>
+    <li><a href="#listening">&#127911; Listening</a></li>
+    <li><a href="#fillblank">&#9999; Fill in</a></li>
+    <li><a href="#quiz">&#127918; Quiz</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- WELCOME -->
+<section id="welcome" class="section welcome-section">
+  <div class="stars-bg">
+    <span class="star s1">&#11088;</span><span class="star s2">&#127775;</span>
+    <span class="star s3">&#10024;</span><span class="star s4">&#11088;</span>
+    <span class="star s5">&#127775;</span><span class="star s6">&#10024;</span>
+  </div>
+  <div class="welcome-content">
+    <div class="mascot">&#128522;</div>
+    <h1 class="main-title">
+      <span class="title-line1">Expressing</span>
+      <span class="title-line2">Preferences!</span>
+      <span class="title-emoji">&#128172;</span>
+    </h1>
+    <div class="welcome-cards">
+      <div class="bilingual-card">
+        <div class="lang-badge eng-badge">&#127482;&#127480; English</div>
+        <p>Today we will learn how to say what we <strong>like</strong> and what we <strong>don't like</strong> in English. Let's have fun! &#127881;</p>
+      </div>
+      <div class="bilingual-card">
+        <div class="lang-badge esp-badge">&#127464;&#127476; Espa&#241;ol</div>
+        <p>Hoy aprenderemos a decir lo que nos <strong>gusta</strong> y lo que <strong>no nos gusta</strong> en ingl&#233;s. &#161;Vamos a divertirnos! &#127881;</p>
+      </div>
+    </div>
+    <a href="#explanation" class="big-btn">Let's Start! &#161;Empecemos! &#128640;</a>
+  </div>
+</section>
+
+<!-- EXPLANATION -->
+<section id="explanation" class="section explanation-section" style="background:var(--bg)">
+  <div class="section-header">
+    <h2 class="section-title">&#128218; Let's Learn! / &#161;Aprendamos!</h2>
+    <p class="section-subtitle">
+      <span class="en-text">Look at these sentences. Can you read them?</span><br>
+      <span class="es-text">Mira estas oraciones. &#191;Puedes leerlas?</span>
+    </p>
+  </div>
+  <div class="grammar-grid">
+    <div class="grammar-card">
+      <div class="card-banner green-b"><span class="structure-txt">I like... &#128522;</span></div>
+      <div class="card-meaning">I like = Me gusta</div>
+      <div class="examples-row">
+        <div class="ex-item"><span class="ex-em">&#127829;</span><span class="ex-tx">I like pizza.</span></div>
+        <div class="ex-item"><span class="ex-em">&#128049;</span><span class="ex-tx">I like cats.</span></div>
+        <div class="ex-item"><span class="ex-em">&#127822;</span><span class="ex-tx">I like apples.</span></div>
+        <div class="ex-item"><span class="ex-em">&#127873;</span><span class="ex-tx">I like toys.</span></div>
+      </div>
+      <button class="listen-mini" onclick="speak('I like pizza. I like cats. I like apples. I like toys.')">&#128266; Listen / Escuchar</button>
+    </div>
+    <div class="grammar-card">
+      <div class="card-banner red-b"><span class="structure-txt">I don't like... &#128533;</span></div>
+      <div class="card-meaning">I don't like = No me gusta</div>
+      <div class="examples-row">
+        <div class="ex-item"><span class="ex-em">&#127843;</span><span class="ex-tx">I don't like milk.</span></div>
+        <div class="ex-item"><span class="ex-em">&#128054;</span><span class="ex-tx">I don't like dogs.</span></div>
+        <div class="ex-item"><span class="ex-em">&#127820;</span><span class="ex-tx">I don't like bananas.</span></div>
+        <div class="ex-item"><span class="ex-em">&#127981;</span><span class="ex-tx">I don't like school.</span></div>
+      </div>
+      <button class="listen-mini" onclick="speak(&quot;I don't like milk. I don't like dogs. I don't like bananas.&quot;)">&#128266; Listen / Escuchar</button>
+    </div>
+    <div class="grammar-card">
+      <div class="card-banner purple-b"><span class="structure-txt">I love... &#128525;</span></div>
+      <div class="card-meaning">I love = Me encanta</div>
+      <div class="examples-row">
+        <div class="ex-item"><span class="ex-em">&#127846;</span><span class="ex-tx">I love ice cream.</span></div>
+        <div class="ex-item"><span class="ex-em">&#127918;</span><span class="ex-tx">I love games.</span></div>
+        <div class="ex-item"><span class="ex-em">&#128054;</span><span class="ex-tx">I love dogs.</span></div>
+        <div class="ex-item"><span class="ex-em">&#127912;</span><span class="ex-tx">I love art.</span></div>
+      </div>
+      <button class="listen-mini" onclick="speak('I love ice cream. I love games. I love dogs. I love art.')">&#128266; Listen / Escuchar</button>
+    </div>
+    <div class="grammar-card">
+      <div class="card-banner orange-b"><span class="structure-txt">I don't love... &#128528;</span></div>
+      <div class="card-meaning">I don't love = No me encanta</div>
+      <div class="examples-row">
+        <div class="ex-item"><span class="ex-em">&#129382;</span><span class="ex-tx">I don't love broccoli.</span></div>
+        <div class="ex-item"><span class="ex-em">&#127783;</span><span class="ex-tx">I don't love rain.</span></div>
+        <div class="ex-item"><span class="ex-em">&#129522;</span><span class="ex-tx">I don't love soap.</span></div>
+        <div class="ex-item"><span class="ex-em">&#128164;</span><span class="ex-tx">I don't love naps.</span></div>
+      </div>
+      <button class="listen-mini" onclick="speak(&quot;I don't love broccoli. I don't love rain. I don't love naps.&quot;)">&#128266; Listen / Escuchar</button>
+    </div>
+  </div>
+  <div class="summary-box">
+    <h3>&#128203; Summary / Resumen</h3>
+    <div class="summary-table-wrap">
+      <table class="summary-table">
+        <thead><tr><th>English</th><th>Espa&#241;ol</th><th>Feeling</th></tr></thead>
+        <tbody>
+          <tr class="row-like"><td><strong>I like</strong></td><td>Me gusta</td><td>&#128522; Happy!</td></tr>
+          <tr class="row-dontlike"><td><strong>I don't like</strong></td><td>No me gusta</td><td>&#128533; Not happy</td></tr>
+          <tr class="row-love"><td><strong>I love</strong></td><td>Me encanta</td><td>&#128525; Super happy!!</td></tr>
+          <tr class="row-dontlove"><td><strong>I don't love</strong></td><td>No me encanta</td><td>&#128528; It's okay...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos" class="section videos-section">
+  <div class="section-header">
+    <h2 class="section-title">&#127916; Watch &amp; Learn! / &#161;Mira y Aprende!</h2>
+  </div>
+  <div class="videos-grid">
+    <div class="video-card">
+      <div class="video-label">
+        <span class="video-badge">&#127925; Video 1</span>
+        <p class="video-desc"><strong>&#127482;&#127480;</strong> Watch this video to learn about preferences!<br><strong>&#127464;&#127476;</strong> &#161;Mira este video para aprender sobre preferencias!</p>
+      </div>
+      <div class="video-wrap"><iframe src="https://www.youtube.com/embed/O7AnqkMr2oI" title="I Like I Don't Like" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+    </div>
+    <div class="video-card">
+      <div class="video-label">
+        <span class="video-badge">&#127925; Video 2</span>
+        <p class="video-desc"><strong>&#127482;&#127480;</strong> Watch and practice what you learned!<br><strong>&#127464;&#127476;</strong> &#161;Mira y practica lo que aprendiste!</p>
+      </div>
+      <div class="video-wrap"><iframe src="https://www.youtube.com/embed/GlSFoc_4MWk" title="I Love I Don't Love" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<!-- READING -->
+<section id="reading" class="section reading-section">
+  <div class="section-header">
+    <h2 class="section-title">&#128214; Reading Time! / &#161;Hora de Leer!</h2>
+    <p class="section-subtitle">
+      <span class="en-text">Read the story and answer the questions.</span><br>
+      <span class="es-text">Lee la historia y responde las preguntas.</span>
+    </p>
+  </div>
+  <div class="story-card">
+    <div class="story-char">&#129312;</div>
+    <div class="story-bubble">
+      <h3>&#127775; Tom and Lisa's Favorites</h3>
+      <p class="story-txt">
+        My name is <strong>Tom</strong>. &#128587; My friend is <strong>Lisa</strong>. &#128105;<br><br>
+        I <strong>love</strong> &#127846; ice cream. It is so yummy!<br>
+        I <strong>like</strong> &#127829; pizza. Pizza is delicious!<br>
+        I <strong>like</strong> &#128049; cats. Cats are cute and soft!<br>
+        I <strong>don't like</strong> &#127843; milk. Milk is not my favorite.<br>
+        I <strong>don't love</strong> &#127783; rain. Rain is cold and wet.<br><br>
+        Lisa <strong>loves</strong> &#128054; dogs. Dogs are her best friends!<br>
+        Lisa <strong>likes</strong> &#127820; bananas. Bananas are sweet!<br>
+        Lisa <strong>doesn't like</strong> &#129382; broccoli. Broccoli is too green!<br>
+        Lisa <strong>doesn't love</strong> &#128164; naps. She wants to play!<br><br>
+        What do YOU like? &#128522;
+      </p>
+      <button class="listen-btn" onclick="speakStory()">&#128266; Read for me / L&#233;eme el cuento</button>
+    </div>
+  </div>
+  <div class="comprehension-box">
+    <h3>&#10067; Answer the questions! / &#161;Responde las preguntas!</h3>
+    <div class="reading-q" id="rq1">
+      <p class="q-text">1. Does Tom <strong>love</strong> ice cream? &#127846;</p>
+      <div class="choice-row">
+        <button class="c-btn" onclick="checkQ('rq1',this,true)">&#9989; Yes, he does!</button>
+        <button class="c-btn" onclick="checkQ('rq1',this,false)">&#10060; No, he doesn't!</button>
+      </div>
+      <div class="fb-box" id="rq1-fb"></div>
+    </div>
+    <div class="reading-q" id="rq2">
+      <p class="q-text">2. Does Tom <strong>like</strong> milk? &#127843;</p>
+      <div class="choice-row">
+        <button class="c-btn" onclick="checkQ('rq2',this,false)">&#9989; Yes, he does!</button>
+        <button class="c-btn" onclick="checkQ('rq2',this,true)">&#10060; No, he doesn't!</button>
+      </div>
+      <div class="fb-box" id="rq2-fb"></div>
+    </div>
+    <div class="reading-q" id="rq3">
+      <p class="q-text">3. What does Tom <strong>like</strong>? Pick the picture!</p>
+      <div class="img-row">
+        <button class="img-btn" onclick="checkQ('rq3',this,false)"><span class="big-em">&#129382;</span><span>Broccoli</span></button>
+        <button class="img-btn" onclick="checkQ('rq3',this,true)"><span class="big-em">&#128049;</span><span>Cat</span></button>
+        <button class="img-btn" onclick="checkQ('rq3',this,false)"><span class="big-em">&#127783;</span><span>Rain</span></button>
+      </div>
+      <div class="fb-box" id="rq3-fb"></div>
+    </div>
+    <div class="reading-q" id="rq4">
+      <p class="q-text">4. What is the boy's name?</p>
+      <div class="choice-row">
+        <button class="c-btn" onclick="checkQ('rq4',this,false)">Sam</button>
+        <button class="c-btn" onclick="checkQ('rq4',this,true)">Tom</button>
+        <button class="c-btn" onclick="checkQ('rq4',this,false)">Tim</button>
+      </div>
+      <div class="fb-box" id="rq4-fb"></div>
+    </div>
+    <div class="reading-q" id="rq5">
+      <p class="q-text">5. Does Lisa <strong>love</strong> dogs? &#128054;</p>
+      <div class="choice-row">
+        <button class="c-btn" onclick="checkQ('rq5',this,true)">&#9989; Yes, she does!</button>
+        <button class="c-btn" onclick="checkQ('rq5',this,false)">&#10060; No, she doesn't!</button>
+      </div>
+      <div class="fb-box" id="rq5-fb"></div>
+    </div>
+    <div class="reading-q" id="rq6">
+      <p class="q-text">6. What does Lisa <strong>not like</strong>? Pick the picture!</p>
+      <div class="img-row">
+        <button class="img-btn" onclick="checkQ('rq6',this,false)"><span class="big-em">&#127820;</span><span>Bananas</span></button>
+        <button class="img-btn" onclick="checkQ('rq6',this,true)"><span class="big-em">&#129382;</span><span>Broccoli</span></button>
+        <button class="img-btn" onclick="checkQ('rq6',this,false)"><span class="big-em">&#128054;</span><span>Dogs</span></button>
+      </div>
+      <div class="fb-box" id="rq6-fb"></div>
+    </div>
+    <div class="reading-q" id="rq7">
+      <p class="q-text">7. Who is Tom's friend?</p>
+      <div class="choice-row">
+        <button class="c-btn" onclick="checkQ('rq7',this,false)">Anna</button>
+        <button class="c-btn" onclick="checkQ('rq7',this,false)">Mary</button>
+        <button class="c-btn" onclick="checkQ('rq7',this,true)">Lisa</button>
+      </div>
+      <div class="fb-box" id="rq7-fb"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUE / FALSE -->
+<section id="truefalse" class="section tf-section">
+  <div class="section-header">
+    <h2 class="section-title">&#10003; True or False? / &#191;Verdadero o Falso?</h2>
+    <p class="section-subtitle">
+      <span class="en-text">Read the sentence. Is it TRUE &#10003; or FALSE &#10007;?</span><br>
+      <span class="es-text">Lee la oraci&#243;n. &#191;Es VERDADERO &#10003; o FALSO &#10007;?</span>
+    </p>
+  </div>
+  <div class="tf-grid" id="tfGrid"></div>
+</section>
+
+<!-- WORD ORDER -->
+<section id="wordorder" class="section" style="background:linear-gradient(160deg,#c3cfe2,#f5f7fa)">
+  <div class="section-header">
+    <h2 class="section-title">&#128297; Word Order! / &#161;Ordena las Palabras!</h2>
+    <p class="section-subtitle">
+      <span class="en-text">Click the words in the correct order to make a sentence!</span><br>
+      <span class="es-text">&#161;Haz clic en las palabras en el orden correcto para formar una oraci&#243;n!</span>
+    </p>
+  </div>
+  <div class="wo-exercises" id="woExercises"></div>
+</section>
+
+<!-- MATCHING -->
+<section id="matching" class="section matching-section">
+  <div class="section-header">
+    <h2 class="section-title">&#128279; Matching! / &#161;Relaciona!</h2>
+    <p class="section-subtitle">
+      <span class="en-text">Click a sentence, then click its picture!</span><br>
+      <span class="es-text">&#161;Haz clic en la oraci&#243;n y luego en su imagen!</span>
+    </p>
+  </div>
+  <div class="match-act">
+    <h3 class="act-label">&#127919; Activity 1: Sentence &#8596; Picture</h3>
+    <div class="match-grid">
+      <div class="match-col" id="sentCol">
+        <div class="m-item" data-id="1" onclick="pickMatch(this,'s')">I like apples. &#127822;</div>
+        <div class="m-item" data-id="2" onclick="pickMatch(this,'s')">I love ice cream. &#128525;</div>
+        <div class="m-item" data-id="3" onclick="pickMatch(this,'s')">I don't like milk.</div>
+        <div class="m-item" data-id="4" onclick="pickMatch(this,'s')">I don't love rain.</div>
+        <div class="m-item" data-id="5" onclick="pickMatch(this,'s')">I love dogs.</div>
+        <div class="m-item" data-id="6" onclick="pickMatch(this,'s')">I like pizza.</div>
+      </div>
+      <div class="match-col" id="imgCol">
+        <div class="m-item" data-id="2" onclick="pickMatch(this,'i')"><span class="m-emoji">&#127846;</span></div>
+        <div class="m-item" data-id="5" onclick="pickMatch(this,'i')"><span class="m-emoji">&#128054;</span></div>
+        <div class="m-item" data-id="1" onclick="pickMatch(this,'i')"><span class="m-emoji">&#127822;</span></div>
+        <div class="m-item" data-id="6" onclick="pickMatch(this,'i')"><span class="m-emoji">&#127829;</span></div>
+        <div class="m-item" data-id="3" onclick="pickMatch(this,'i')"><span class="m-emoji">&#127843;</span></div>
+        <div class="m-item" data-id="4" onclick="pickMatch(this,'i')"><span class="m-emoji">&#127783;</span></div>
+      </div>
+    </div>
+    <div class="fb-box" id="m1fb"></div>
+    <div class="match-score" id="m1score">Matches: 0 / 6</div>
+    <button class="reset-btn" onclick="resetMatch()">&#128260; Try Again</button>
+  </div>
+  <div class="match-act">
+    <h3 class="act-label">&#127919; Activity 2: English &#8596; Espa&#241;ol</h3>
+    <p style="font-size:.9rem;margin-bottom:1rem;"><span class="en-text">Click English, then click Spanish!</span><br><span class="es-text">&#161;Haz clic en ingl&#233;s y luego en espa&#241;ol!</span></p>
+    <div class="tr-grid" id="trGrid"></div>
+    <div class="fb-box" id="m2fb"></div>
+    <button class="reset-btn" onclick="buildTranslate()">&#128260; Try Again</button>
+  </div>
+  <div class="match-act">
+    <h3 class="act-label">&#127919; Activity 3: Emoji &#8596; Meaning</h3>
+    <p style="font-size:.9rem;margin-bottom:1rem;"><span class="en-text">Match the emoji with what it means!</span><br><span class="es-text">&#161;Relaciona el emoji con su significado!</span></p>
+    <div class="tr-grid" id="emojiGrid"></div>
+    <div class="fb-box" id="m3fb"></div>
+    <button class="reset-btn" onclick="buildEmojiMatch()">&#128260; Try Again</button>
+  </div>
+</section>
+
+<!-- LISTENING -->
+<section id="listening" class="section listening-section">
+  <div class="section-header">
+    <h2 class="section-title">&#127911; Listening Time! / &#161;Hora de Escuchar!</h2>
+    <p class="section-subtitle">
+      <span class="en-text">Press LISTEN and choose the correct picture! &#127925;</span><br>
+      <span class="es-text">&#161;Presiona ESCUCHAR y elige la imagen correcta!</span>
+    </p>
+  </div>
+  <div class="listen-grid" id="listenGrid"></div>
+  <span class="listen-score" id="listenScore">Score: 0 / 0 &#11088;</span>
+</section>
+
+<!-- FILL IN THE BLANK -->
+<section id="fillblank" class="section fillblank-section">
+  <div class="section-header">
+    <h2 class="section-title">&#9999; Fill in the Blank! / &#161;Completa!</h2>
+    <p class="section-subtitle">
+      <span class="en-text">Choose the right word to complete the sentence!</span><br>
+      <span class="es-text">&#161;Elige la palabra correcta para completar la oraci&#243;n!</span>
+    </p>
+  </div>
+  <div class="fill-grid" id="fillGrid"></div>
+  <div class="fill-score-row">
+    <span id="fillScore">Score: 0 / 0 &#11088;</span>
+    <button class="reset-btn" onclick="buildFill()">&#128260; Reset</button>
+  </div>
+</section>
+
+<!-- QUIZ (password-locked) -->
+<section id="quiz" class="section quiz-section">
+  <div class="section-header">
+    <h2 class="section-title">&#127918; Final Quiz! / &#161;Quiz Final!</h2>
+    <p class="section-subtitle">
+      <span class="en-text">Test everything you learned! Answer 10 questions! &#127919;</span><br>
+      <span class="es-text">&#161;Pon a prueba todo lo que aprendiste! &#161;Responde 10 preguntas!</span>
+    </p>
+  </div>
+  <div class="quiz-wrap">
+    <div class="q-progress-bar"><div class="q-progress-fill" id="qBar"></div></div>
+    <div class="q-progress-txt" id="qTxt">Question 1 of 10</div>
+    <div id="quizArea">
+      <!-- filled by JS: active quiz, locked screen, or result -->
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <p>&#11088; Expressing Preferences | Grade 1 English &#11088;</p>
+  <p>Made with &#10084;&#65039; for young learners / Hecho con &#10084;&#65039; para peque&#241;os estudiantes</p>
+  <p class="f-emoji">&#127829; &#127846; &#128049; &#127822; &#127873; &#127843; &#127918; &#127775;</p>
+</footer>
+
+<script>
+/* ==================== NAVIGATION ==================== */
+document.getElementById('navToggle').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+});
+
+/* ==================== SCROLL FADE ==================== */
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')});},{threshold:.1});
+document.querySelectorAll('.section').forEach(s=>obs.observe(s));
+
+/* ==================== SPEECH ==================== */
+function speak(txt){
+  if(!window.speechSynthesis){alert('Try Chrome or Edge for audio!');return;}
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(txt);
+  u.lang='en-US';u.rate=0.82;u.pitch=1.1;u.volume=1;
+  const vv=window.speechSynthesis.getVoices();
+  const v=vv.find(v=>v.lang.startsWith('en')&&(v.name.includes('Female')||v.name.includes('Samantha')||v.name.includes('Google')))||vv.find(v=>v.lang.startsWith('en'));
+  if(v)u.voice=v;
+  window.speechSynthesis.speak(u);
+}
+if(window.speechSynthesis)window.speechSynthesis.onvoiceschanged=()=>window.speechSynthesis.getVoices();
+
+function speakStory(){
+  speak("My name is Tom. My friend is Lisa. I love ice cream. It is so yummy! I like pizza. Pizza is delicious! I like cats. Cats are cute and soft! I don't like milk. Milk is not my favorite. I don't love rain. Rain is cold and wet. Lisa loves dogs. Dogs are her best friends! Lisa likes bananas. Bananas are sweet! Lisa doesn't like broccoli. Broccoli is too green! Lisa doesn't love naps. She wants to play! What do YOU like?");
+}
+
+/* ==================== READING ==================== */
+function checkQ(id,btn,ok){
+  const box=document.getElementById(id);
+  box.querySelectorAll('.c-btn,.img-btn').forEach(b=>b.disabled=true);
+  const fb=document.getElementById(id+'-fb');
+  btn.classList.add(ok?'correct':'wrong');
+  fb.innerHTML=ok?'&#127881; Correct! / &#161;Correcto!':'&#128533; Try again next time! / &#161;Int&#233;ntalo de nuevo!';
+  fb.className='fb-box '+(ok?'fb-ok':'fb-err');
+  if(ok)speak('Correct! Great job!');
+}
+
+/* ==================== TRUE / FALSE ==================== */
+const tfData=[
+  {s:'"I like" means Me gusta. &#128522;',pic:'',truth:true},
+  {s:'"I love" means No me gusta. &#128533;',pic:'',truth:false},
+  {s:'"I don\'t like" means No me gusta. &#127843;',pic:'',truth:true},
+  {s:'I like + &#127822; = I like apples.',pic:'',truth:true},
+  {s:'"I love" is stronger than "I like". &#128525;',pic:'',truth:true},
+  {s:'"I don\'t love" means Me encanta. &#128525;',pic:'',truth:false},
+  {s:'I don\'t like &#127843; means No me gusta la leche.',pic:'',truth:true},
+  {s:'"I love cats" = No me gustan los gatos. &#128049;',pic:'',truth:false},
+];
+
+function buildTF(){
+  const grid=document.getElementById('tfGrid');
+  grid.innerHTML='';
+  tfData.forEach((item,i)=>{
+    const card=document.createElement('div');
+    card.className='tf-card';
+    const fb=document.createElement('div');
+    fb.className='fb-box';fb.id='tffb'+i;
+    card.innerHTML=`<p class="tf-sentence">${item.s}</p><div class="tf-btns"><button class="tf-btn" onclick="checkTF(${i},this,${item.truth})">&#10003; TRUE / VERDADERO</button><button class="tf-btn" onclick="checkTF(${i},this,${!item.truth})">&#10007; FALSE / FALSO</button></div>`;
+    card.appendChild(fb);
+    grid.appendChild(card);
+  });
+}
+
+function checkTF(i,btn,ok){
+  const card=btn.closest('.tf-card');
+  card.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('tffb'+i);
+  btn.classList.add(ok?'correct':'wrong');
+  fb.innerHTML=ok?'&#127881; Correct! / &#161;Correcto!':'&#10060; Not quite! / &#161;Casi!';
+  fb.className='fb-box '+(ok?'fb-ok':'fb-err');
+  if(ok)speak('Correct!');
+}
+buildTF();
+
+/* ==================== WORD ORDER ==================== */
+const woData=[
+  {words:['I','like','pizza','.'],answer:'I like pizza .'},
+  {words:['I','love','ice','cream','.'],answer:'I love ice cream .'},
+  {words:["don't",'I','like','milk','.'],answer:"I don't like milk ."},
+  {words:['love','I','dogs','.'],answer:'I love dogs .'},
+  {words:["don't",'I','love','rain','.'],answer:"I don't love rain ."},
+  {words:['I','like','apples','and','cats','.'],answer:'I like apples and cats .'},
+];
+
+function buildWO(){
+  const cont=document.getElementById('woExercises');
+  cont.innerHTML='';
+  woData.forEach((ex,i)=>{
+    const shuffled=[...ex.words].sort(()=>Math.random()-.5);
+    const card=document.createElement('div');
+    card.className='wo-card';
+    card.innerHTML=`
+      <h4>&#128297; Sentence ${i+1}</h4>
+      <p class="wo-instruction">&#127482;&#127480; Click the words in the correct order! / &#127464;&#127476; &#161;Haz clic en las palabras en el orden correcto!</p>
+      <div class="wo-slot" id="woslot${i}"></div>
+      <div class="wo-words" id="wobank${i}"></div>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+        <button class="wo-check" onclick="checkWO(${i},'${ex.answer}')">&#9989; Check! / &#161;Revisar!</button>
+        <button class="wo-reset" onclick="resetWO(${i})">&#128260; Reset</button>
+      </div>
+      <div class="fb-box" id="wofb${i}"></div>`;
+    cont.appendChild(card);
+    const bank=card.querySelector('#wobank'+i);
+    shuffled.forEach(w=>{
+      const btn=document.createElement('button');
+      btn.className='wo-word in-bank';
+      btn.textContent=w;
+      btn.dataset.word=w;
+      btn.onclick=()=>moveToSlot(btn,i);
+      bank.appendChild(btn);
+    });
+  });
+}
+
+function moveToSlot(btn,i){
+  if(btn.classList.contains('in-bank')){
+    btn.classList.remove('in-bank');btn.classList.add('in-slot');
+    document.getElementById('woslot'+i).appendChild(btn);
+    btn.onclick=()=>moveToBank(btn,i);
+  }
+}
+function moveToBank(btn,i){
+  if(btn.classList.contains('in-slot')){
+    btn.classList.remove('in-slot');btn.classList.add('in-bank');
+    document.getElementById('wobank'+i).appendChild(btn);
+    btn.onclick=()=>moveToSlot(btn,i);
+  }
+}
+function checkWO(i,answer){
+  const slot=document.getElementById('woslot'+i);
+  const words=[...slot.querySelectorAll('.wo-word')].map(b=>b.dataset.word).join(' ');
+  const fb=document.getElementById('wofb'+i);
+  if(words===answer){
+    fb.innerHTML='&#127881; Perfect! / &#161;Perfecto!';fb.className='fb-box fb-ok';
+    speak('Perfect! Great job!');
+  } else if(!words){
+    fb.innerHTML='&#9888;&#65039; Put some words first! / &#161;Pon algunas palabras primero!';fb.className='fb-box fb-err';
+  } else {
+    fb.innerHTML='&#128533; Not quite! Try again! / &#161;Int&#233;ntalo de nuevo!';fb.className='fb-box fb-err';
+    speak('Not quite! Try again!');
+  }
+}
+function resetWO(i){
+  const slot=document.getElementById('woslot'+i);
+  const bank=document.getElementById('wobank'+i);
+  [...slot.querySelectorAll('.wo-word')].forEach(btn=>{
+    btn.classList.remove('in-slot');btn.classList.add('in-bank');
+    bank.appendChild(btn);
+    btn.onclick=()=>moveToSlot(btn,i);
+  });
+  document.getElementById('wofb'+i).innerHTML='';
+}
+buildWO();
+
+/* ==================== MATCHING 1 ==================== */
+let selS=null,selI=null,m1score=0;
+const MATCH1_TOTAL=6;
+
+function pickMatch(el,type){
+  if(el.classList.contains('matched-ok'))return;
+  if(type==='s'){if(selS)selS.classList.remove('selected');selS=el;el.classList.add('selected');}
+  else{if(selI)selI.classList.remove('selected');selI=el;el.classList.add('selected');}
+  if(selS&&selI)evalMatch();
+}
+function evalMatch(){
+  const fb=document.getElementById('m1fb');
+  if(selS.dataset.id===selI.dataset.id){
+    [selS,selI].forEach(e=>{e.classList.remove('selected');e.classList.add('matched-ok');e.style.pointerEvents='none';});
+    m1score++;
+    document.getElementById('m1score').textContent='Matches: '+m1score+' / '+MATCH1_TOTAL;
+    fb.innerHTML='&#9989; Great match!';fb.className='fb-box fb-ok';
+    speak('Great match!');
+    if(m1score===MATCH1_TOTAL){fb.innerHTML='&#127942; All matched! / &#161;Todos emparejados!';speak('Amazing! You matched them all!');}
+  } else {
+    [selS,selI].forEach(e=>e.classList.add('matched-err'));
+    fb.innerHTML='&#10060; Try again!';fb.className='fb-box fb-err';
+    const a=selS,b=selI;
+    setTimeout(()=>{a.classList.remove('selected','matched-err');b.classList.remove('selected','matched-err');fb.innerHTML='';},900);
+  }
+  selS=null;selI=null;
+}
+function resetMatch(){
+  m1score=0;selS=null;selI=null;
+  document.querySelectorAll('.m-item').forEach(e=>{e.classList.remove('selected','matched-ok','matched-err');e.style.pointerEvents='';});
+  document.getElementById('m1score').textContent='Matches: 0 / '+MATCH1_TOTAL;
+  document.getElementById('m1fb').innerHTML='';
+}
+
+/* ==================== MATCHING 2 (Translate) ==================== */
+const trPairs=[
+  {id:'A',en:'I like',es:'Me gusta'},
+  {id:'B',en:"I don't like",es:'No me gusta'},
+  {id:'C',en:'I love',es:'Me encanta'},
+  {id:'D',en:"I don't love",es:'No me encanta'},
+  {id:'E',en:'I like pizza',es:'Me gusta la pizza'},
+  {id:'F',en:'I love dogs',es:'Me encantan los perros'},
+];
+let trSel=null,trScore=0;
+
+function buildTranslate(){
+  const grid=document.getElementById('trGrid');
+  grid.innerHTML='';
+  trSel=null;trScore=0;
+  document.getElementById('m2fb').innerHTML='';
+  const sh=p=>[...p].sort(()=>Math.random()-.5);
+  const colA=document.createElement('div');colA.style.cssText='display:flex;flex-direction:column;gap:.7rem';
+  const colB=document.createElement('div');colB.style.cssText='display:flex;flex-direction:column;gap:.7rem';
+  sh(trPairs).forEach(p=>{
+    const el=document.createElement('div');el.className='tr-item';el.dataset.id=p.id;el.dataset.lang='en';el.textContent=p.en;el.onclick=()=>pickTr(el,'m2fb',()=>trScore++,()=>trScore===trPairs.length);
+    colA.appendChild(el);
+  });
+  sh(trPairs).forEach(p=>{
+    const el=document.createElement('div');el.className='tr-item';el.dataset.id=p.id;el.dataset.lang='es';el.textContent=p.es;el.onclick=()=>pickTr(el,'m2fb',()=>trScore++,()=>trScore===trPairs.length);
+    colB.appendChild(el);
+  });
+  grid.appendChild(colA);grid.appendChild(colB);
+}
+
+/* ==================== MATCHING 3 (Emoji meaning) ==================== */
+const emojiPairs=[
+  {id:'1',a:'&#128522; I like',b:'Smile – Me gusta algo'},
+  {id:'2',a:'&#128525; I love',b:'Heart eyes – Me encanta'},
+  {id:'3',a:'&#128533; I don\'t like',b:'Sad face – No me gusta'},
+  {id:'4',a:'&#128528; I don\'t love',b:'Meh face – No me encanta'},
+];
+let emSel=null,emScore=0;
+
+function buildEmojiMatch(){
+  const grid=document.getElementById('emojiGrid');
+  grid.innerHTML='';emSel=null;emScore=0;
+  document.getElementById('m3fb').innerHTML='';
+  const sh=p=>[...p].sort(()=>Math.random()-.5);
+  const colA=document.createElement('div');colA.style.cssText='display:flex;flex-direction:column;gap:.7rem';
+  const colB=document.createElement('div');colB.style.cssText='display:flex;flex-direction:column;gap:.7rem';
+  sh(emojiPairs).forEach(p=>{
+    const el=document.createElement('div');el.className='tr-item';el.dataset.id=p.id;el.dataset.lang='a';el.innerHTML=p.a;el.onclick=()=>pickTr2(el);
+    colA.appendChild(el);
+  });
+  sh(emojiPairs).forEach(p=>{
+    const el=document.createElement('div');el.className='tr-item';el.dataset.id=p.id;el.dataset.lang='b';el.textContent=p.b;el.onclick=()=>pickTr2(el);
+    colB.appendChild(el);
+  });
+  grid.appendChild(colA);grid.appendChild(colB);
+}
+
+function pickTr(el,fbId,scoreUp,isDone){
+  if(el.classList.contains('matched-ok'))return;
+  if(trSel&&trSel.dataset.lang===el.dataset.lang){trSel.classList.remove('selected');trSel=null;}
+  if(!trSel){trSel=el;el.classList.add('selected');return;}
+  const fb=document.getElementById(fbId);
+  if(trSel.dataset.id===el.dataset.id){
+    [trSel,el].forEach(e=>{e.classList.remove('selected');e.classList.add('matched-ok');e.style.pointerEvents='none';});
+    scoreUp();
+    fb.innerHTML='&#9989; Correct!';fb.className='fb-box fb-ok';speak('Correct!');
+    if(isDone()){fb.innerHTML='&#127942; All matched! / &#161;Todo emparejado!';speak('Amazing!');}
+  } else {
+    trSel.classList.add('matched-err');el.classList.add('matched-err');
+    fb.innerHTML='&#10060; Try again!';fb.className='fb-box fb-err';
+    const a=trSel,b=el;
+    setTimeout(()=>{a.classList.remove('selected','matched-err');b.classList.remove('selected','matched-err');fb.innerHTML='';},900);
+  }
+  trSel=null;
+}
+
+function pickTr2(el){
+  if(el.classList.contains('matched-ok'))return;
+  if(emSel&&emSel.dataset.lang===el.dataset.lang){emSel.classList.remove('selected');emSel=null;}
+  if(!emSel){emSel=el;el.classList.add('selected');return;}
+  const fb=document.getElementById('m3fb');
+  if(emSel.dataset.id===el.dataset.id){
+    [emSel,el].forEach(e=>{e.classList.remove('selected');e.classList.add('matched-ok');e.style.pointerEvents='none';});
+    emScore++;
+    fb.innerHTML='&#9989; Correct!';fb.className='fb-box fb-ok';speak('Correct!');
+    if(emScore===emojiPairs.length){fb.innerHTML='&#127942; All matched!';speak('Amazing! You matched them all!');}
+  } else {
+    emSel.classList.add('matched-err');el.classList.add('matched-err');
+    const a=emSel,b=el;
+    fb.innerHTML='&#10060; Try again!';fb.className='fb-box fb-err';
+    setTimeout(()=>{a.classList.remove('selected','matched-err');b.classList.remove('selected','matched-err');fb.innerHTML='';},900);
+  }
+  emSel=null;
+}
+
+buildTranslate();
+buildEmojiMatch();
+
+/* ==================== LISTENING ==================== */
+const listenData=[
+  {phrase:'I like apples.',opts:[{em:'&#127822;',lb:'Apples',ok:true},{em:'&#127843;',lb:'Milk',ok:false},{em:'&#127783;',lb:'Rain',ok:false}]},
+  {phrase:'I love ice cream.',opts:[{em:'&#128049;',lb:'Cat',ok:false},{em:'&#127846;',lb:'Ice cream',ok:true},{em:'&#127829;',lb:'Pizza',ok:false}]},
+  {phrase:"I don't like milk.",opts:[{em:'&#127843;',lb:'Milk',ok:true},{em:'&#127822;',lb:'Apples',ok:false},{em:'&#127820;',lb:'Bananas',ok:false}]},
+  {phrase:"I don't love bananas.",opts:[{em:'&#127829;',lb:'Pizza',ok:false},{em:'&#127846;',lb:'Ice cream',ok:false},{em:'&#127820;',lb:'Bananas',ok:true}]},
+  {phrase:'I like cats.',opts:[{em:'&#128054;',lb:'Dog',ok:false},{em:'&#128049;',lb:'Cat',ok:true},{em:'&#127829;',lb:'Pizza',ok:false}]},
+  {phrase:'I love pizza.',opts:[{em:'&#127829;',lb:'Pizza',ok:true},{em:'&#129382;',lb:'Broccoli',ok:false},{em:'&#127820;',lb:'Bananas',ok:false}]},
+  {phrase:"I don't like broccoli.",opts:[{em:'&#129382;',lb:'Broccoli',ok:true},{em:'&#127873;',lb:'Toys',ok:false},{em:'&#127912;',lb:'Art',ok:false}]},
+  {phrase:'I love dogs.',opts:[{em:'&#128049;',lb:'Cat',ok:false},{em:'&#128054;',lb:'Dog',ok:true},{em:'&#127783;',lb:'Rain',ok:false}]},
+];
+let lOk=0,lTotal=0;
+
+function buildListen(){
+  const grid=document.getElementById('listenGrid');
+  grid.innerHTML='';
+  listenData.forEach((ex,i)=>{
+    const card=document.createElement('div');card.className='listen-card';
+    card.innerHTML=`<h4>Exercise ${i+1}</h4><button class="phrase-btn" onclick="speak('${ex.phrase.replace(/'/g,"\\'")}')">&#128266; Listen!</button><p style="font-size:.85rem;font-weight:600;margin-bottom:.5rem">&#128071; Choose! / &#161;Elige!</p><div class="opts-row" id="lo${i}"></div><div class="fb-box" id="lf${i}"></div>`;
+    const row=card.querySelector('#lo'+i);
+    ex.opts.forEach(o=>{
+      const b=document.createElement('button');b.className='opt-btn';
+      b.innerHTML=`<span class="opt-em">${o.em}</span><span>${o.lb}</span>`;
+      b.onclick=()=>checkListen(i,b,o.ok,row);
+      row.appendChild(b);
+    });
+    grid.appendChild(card);
+  });
+  updateLS();
+}
+function checkListen(i,btn,ok,row){
+  row.querySelectorAll('.opt-btn').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('lf'+i);lTotal++;
+  btn.classList.add(ok?'correct':'wrong');
+  fb.innerHTML=ok?"&#127881; Yes! That's right!":"&#128533; Not quite! Try listening again!";
+  fb.className='fb-box '+(ok?'fb-ok':'fb-err');
+  if(ok)lOk++;
+  if(ok)speak("Yes! That is right!");
+  updateLS();
+}
+function updateLS(){document.getElementById('listenScore').textContent='Score: '+lOk+' / '+lTotal+' &#11088;';}
+buildListen();
+
+/* ==================== FILL IN THE BLANK ==================== */
+const fillData=[
+  {pre:'I',post:'pizza. &#127829;',ans:'like',hint:'(Hint: pizza is good!)'},
+  {pre:'I',post:'milk. &#127843;',ans:"don't like",hint:'(Hint: not my favorite!)'},
+  {pre:'I',post:'cats. &#128049;',ans:'like',hint:'(Hint: cats are cute!)'},
+  {pre:'I',post:'ice cream! &#127846;',ans:'love',hint:'(Hint: ice cream is AMAZING!)'},
+  {pre:'I',post:'bananas. &#127820;',ans:"don't love",hint:'(Hint: just okay...)'},
+  {pre:'I',post:'apples. &#127822;',ans:'like',hint:'(Hint: apples are yummy!)'},
+  {pre:'I',post:'rain. &#127783;',ans:"don't love",hint:'(Hint: rain is cold!)'},
+  {pre:'I',post:'dogs. &#128054;',ans:'love',hint:'(Hint: dogs are the best!)'},
+  {pre:'I',post:'broccoli. &#129382;',ans:"don't like",hint:'(Hint: too green!)'},
+  {pre:'I',post:'toys. &#127873;',ans:'like',hint:'(Hint: toys are fun!)'},
+];
+const fOpts=['like',"don't like",'love',"don't love"];
+let fOk=0,fTotal=0;
+
+function buildFill(){
+  const grid=document.getElementById('fillGrid');
+  grid.innerHTML='';fOk=0;fTotal=0;updateFS();
+  fillData.forEach((ex,i)=>{
+    const card=document.createElement('div');card.className='fill-card';
+    const sel=document.createElement('select');sel.className='fill-sel';sel.id='fs'+i;
+    const ph=document.createElement('option');ph.value='';ph.textContent='&#128317; Choose...';ph.disabled=true;ph.selected=true;sel.appendChild(ph);
+    [...fOpts].sort(()=>Math.random()-.5).forEach(op=>{const o=document.createElement('option');o.value=op;o.textContent=op;sel.appendChild(o);});
+    const sa=document.createElement('div');sa.className='sent-area';
+    sa.appendChild(document.createTextNode(ex.pre+' '));sa.appendChild(sel);
+    const r=document.createElement('span');r.innerHTML=' <strong>'+ex.post+'</strong>';sa.appendChild(r);
+    const hint=document.createElement('p');hint.className='fill-hint';hint.textContent=ex.hint;
+    const fb=document.createElement('div');fb.className='fill-fb';fb.id='ff'+i;
+    const btn=document.createElement('button');btn.className='check-btn';btn.innerHTML='&#9989; Check!';
+    btn.onclick=()=>checkFill(i,sel,ex.ans,btn,fb);
+    card.appendChild(sa);card.appendChild(hint);card.appendChild(btn);card.appendChild(fb);
+    grid.appendChild(card);
+  });
+}
+function checkFill(i,sel,ans,btn,fb){
+  const v=sel.value;
+  if(!v){fb.innerHTML='&#9888;&#65039; Choose a word first!';fb.className='fill-fb fb-err';return;}
+  sel.disabled=true;btn.disabled=true;fTotal++;
+  if(v===ans){
+    fb.innerHTML='&#127881; Correct! "'+v+'" is right!';fb.className='fill-fb fb-ok';
+    sel.style.background='#D5F5E3';sel.style.borderColor='#2ECC71';fOk++;speak('Correct!');
+  } else {
+    fb.innerHTML='&#128533; The answer is "'+ans+'"!';fb.className='fill-fb fb-err';
+    sel.style.background='#FADBD8';sel.style.borderColor='#E74C3C';speak('The answer is '+ans+'.');
+  }
+  updateFS();
+}
+function updateFS(){document.getElementById('fillScore').textContent='Score: '+fOk+' / '+fTotal+' &#11088;';}
+buildFill();
+
+/* ==================== QUIZ (password-locked reset) ==================== */
+const QUIZ_PASSWORD='ASPAEN123';
+const quizQ=[
+  {q:'What does "I like" mean in Spanish?',em:'&#128522;',opts:['No me gusta','Me gusta','Me encanta','No me encanta'],ok:1,ex:'"I like" = Me gusta &#128522;'},
+  {q:'Which sentence is correct for &#127846;?',em:'&#127846;',opts:['I like milk.','I love ice cream.','I don\'t like cats.','I don\'t love pizza.'],ok:1,ex:'"I love ice cream!" &#127846;'},
+  {q:'I ____ pizza. (It is AMAZING! &#128525;)',em:'&#127829;',opts:['like',"don't like",'love',"don't love"],ok:2,ex:'AMAZING = I love pizza!'},
+  {q:'How do you say "No me gusta el perro"?',em:'&#128054;',opts:['I love the dog.','I like the dog.',"I don't like the dog.","I don't love the dog."],ok:2,ex:'"No me gusta" = I don\'t like &#128054;'},
+  {q:'What does "I don\'t love" mean?',em:'&#128528;',opts:['Me encanta','Me gusta','No me gusta','No me encanta'],ok:3,ex:'"I don\'t love" = No me encanta &#128528;'},
+  {q:'I ____ apples. (Nice but not FAVORITE! &#127822;)',em:'&#127822;',opts:['love',"don't love","don't like",'like'],ok:1,ex:'Not favorite = I don\'t love apples &#127822;'},
+  {q:'Which picture matches "I like cats"?',em:'&#129300;',opts:['&#127843; Milk','&#127829; Pizza','&#128049; Cat','&#127783; Rain'],ok:2,ex:'"I like cats" = &#128049; Cat!'},
+  {q:'Complete: "I ____ milk." (NOT at all! &#127843;)',em:'&#127843;',opts:['like','love',"don't like","don't love"],ok:2,ex:'"NOT at all" = I don\'t like milk &#127843;'},
+  {q:'TRUE or FALSE: "I love" is stronger than "I like".',em:'&#128525;',opts:['TRUE &#9989;','FALSE &#10060;','They are the same','I don\'t know'],ok:0,ex:'TRUE! "I love" is much stronger! &#128525;'},
+  {q:'What is the Spanish meaning of "I don\'t like"?',em:'&#128533;',opts:['Me encanta','Me gusta','No me encanta','No me gusta'],ok:3,ex:'"I don\'t like" = No me gusta &#128533;'},
+];
+
+let qIdx=0,qScore=0,qAnswered=false,quizDone=false,quizStarted=false;
+
+function initQuiz(){
+  // Show start button if not started
+  if(!quizStarted && !quizDone){
+    renderStartScreen();
+  } else if(quizDone){
+    renderLockedScreen();
+  } else {
+    renderQ();
+  }
+}
+
+function renderStartScreen(){
+  document.getElementById('qBar').style.width='0%';
+  document.getElementById('qTxt').textContent='Ready? / &#161;Listo?';
+  document.getElementById('quizArea').innerHTML=`
+    <div class="q-card" style="text-align:center">
+      <span style="font-size:4rem;display:block;margin-bottom:1rem">&#127918;</span>
+      <h3 style="font-family:'Fredoka One',cursive;font-size:1.8rem;margin-bottom:.8rem">Final Quiz!</h3>
+      <p style="font-size:1rem;color:var(--text-lt);margin-bottom:.5rem;line-height:1.7">
+        <span class="en-text">10 questions about Expressing Preferences.<br>You can only do this quiz <strong>once</strong>!</span><br>
+        <span class="es-text">10 preguntas sobre Expressing Preferences.<br>&#161;Solo puedes hacer este quiz <strong>una vez</strong>!</span>
+      </p>
+      <p style="font-size:.9rem;color:var(--red-dk);font-weight:700;margin-bottom:1.5rem">&#128274; The teacher needs a password to restart. / El profesor necesita contrase&#241;a para reiniciar.</p>
+      <button class="big-btn" onclick="startQuiz()" style="margin-top:0;font-size:1.1rem;padding:.8rem 2rem">&#127919; Start Quiz / &#161;Comenzar!</button>
+    </div>`;
+}
+
+function startQuiz(){
+  quizStarted=true;qIdx=0;qScore=0;quizDone=false;
+  renderQ();
+}
+
+function renderQ(){
+  const q=quizQ[qIdx];
+  document.getElementById('qBar').style.width=(qIdx/quizQ.length*100)+'%';
+  document.getElementById('qTxt').textContent='Question '+(qIdx+1)+' of '+quizQ.length;
+  qAnswered=false;
+  document.getElementById('quizArea').innerHTML=`
+    <div class="q-card" id="qCard">
+      <div class="q-num">Question ${qIdx+1}</div>
+      <p class="q-txt">${q.q}</p>
+      <span class="q-em">${q.em}</span>
+      <div class="q-opts">${q.opts.map((o,i)=>`<button class="q-opt" onclick="answerQ(${i})">${o}</button>`).join('')}</div>
+      <div class="fb-box q-fb" id="qfb"></div>
+    </div>`;
+}
+
+function answerQ(i){
+  if(qAnswered)return;
+  qAnswered=true;
+  const q=quizQ[qIdx];
+  const btns=document.querySelectorAll('.q-opt');
+  btns.forEach(b=>b.disabled=true);
+  const fb=document.getElementById('qfb');
+  const ok=(i===q.ok);
+  btns[i].classList.add(ok?'correct':'wrong');
+  if(!ok)btns[q.ok].classList.add('correct');
+  fb.innerHTML=(ok?'&#127881; ':'&#128533; ')+q.ex;
+  fb.className='fb-box q-fb '+(ok?'fb-ok':'fb-err');
+  if(ok){qScore++;speak('Correct! Great job!');}
+  setTimeout(()=>{
+    qIdx++;
+    if(qIdx<quizQ.length)renderQ();
+    else showResult();
+  },2200);
+}
+
+function showResult(){
+  quizDone=true;quizStarted=false;
+  const total=quizQ.length,pct=Math.round(qScore/total*100);
+  let em,title,msg;
+  if(pct===100){em='&#127942;';title='Perfect Score! &#161;Perfecto!';msg='You got every single one right! &#127775;&#127775;&#127775;<br>&#161;Respondiste TODAS correctamente!';}
+  else if(pct>=80){em='&#127775;';title='Excellent! &#161;Excelente!';msg='Amazing work! Keep it up! &#128170;<br>&#161;Trabajo incre&#237;ble!';}
+  else if(pct>=60){em='&#128522;';title='Good Job! &#161;Buen Trabajo!';msg='Keep practicing and you will be great! &#128218;<br>&#161;Sigue practicando!';}
+  else{em='&#128170;';title='Keep Going! &#161;S&#237;guele!';msg="Don't give up! Review and try again! &#128260;<br>&#161;No te rindas! &#161;Repasa e intenta de nuevo!";}
+  document.getElementById('qBar').style.width='100%';
+  document.getElementById('qTxt').textContent='Quiz Complete! / &#161;Quiz Completo!';
+  document.getElementById('quizArea').innerHTML=`
+    <div class="q-result">
+      <span class="r-emoji">${em}</span>
+      <h3 class="r-title">${title}</h3>
+      <p class="r-score">You got <strong>${qScore} out of ${total}</strong> correct! (${pct}%)</p>
+      <p class="r-score">&#161;Respondiste <strong>${qScore} de ${total}</strong> correctas!</p>
+      <p class="r-msg">${msg}</p>
+      <hr style="margin:1.2rem 0;border:none;border-top:2px dashed #eee">
+      <p style="font-size:.85rem;color:var(--text-lt);margin-bottom:1rem">&#128274; <span class="en-text">Teacher: enter the password to allow a new attempt.</span><br><span class="es-text">Profesor: ingresa la contrase&#241;a para permitir un nuevo intento.</span></p>
+      <div class="unlock-form">
+        <label class="unlock-label">&#128272; Password / Contrase&#241;a:</label>
+        <input class="unlock-input" type="password" id="pwInput" placeholder="Enter password..." onkeydown="if(event.key==='Enter')tryUnlock()"/>
+        <button class="unlock-btn" onclick="tryUnlock()">&#128275; Unlock / Desbloquear</button>
+        <div class="unlock-err" id="pwErr"></div>
+      </div>
+    </div>`;
+  speak('Quiz complete! You got '+qScore+' out of '+total+' correct!');
+}
+
+function renderLockedScreen(){
+  const savedScore=sessionStorage.getItem('lastQuizScore')||'?';
+  const savedTotal=sessionStorage.getItem('lastQuizTotal')||'?';
+  document.getElementById('qBar').style.width='100%';
+  document.getElementById('qTxt').textContent='Quiz Completed / Quiz Completado';
+  document.getElementById('quizArea').innerHTML=`
+    <div class="quiz-locked-banner">
+      <span class="lock-emoji">&#128274;</span>
+      <h3 class="lock-title">Quiz Completed! / &#161;Quiz Completado!</h3>
+      <p class="lock-sub"><span class="en-text">You already completed this quiz.<br>Ask your teacher to enter the password to try again.</span><br><span class="es-text">Ya completaste este quiz.<br>Pide a tu profesor que ingrese la contrase&#241;a para intentarlo de nuevo.</span></p>
+      <div class="unlock-form">
+        <label class="unlock-label">&#128272; Teacher Password:</label>
+        <input class="unlock-input" type="password" id="pwInput" placeholder="Password..." onkeydown="if(event.key==='Enter')tryUnlock()"/>
+        <button class="unlock-btn" onclick="tryUnlock()">&#128275; Unlock</button>
+        <div class="unlock-err" id="pwErr"></div>
+      </div>
+    </div>`;
+}
+
+function tryUnlock(){
+  const input=document.getElementById('pwInput');
+  const err=document.getElementById('pwErr');
+  if(!input)return;
+  if(input.value===QUIZ_PASSWORD){
+    quizDone=false;quizStarted=false;qIdx=0;qScore=0;
+    err.textContent='';
+    renderStartScreen();
+  } else {
+    err.textContent='&#10060; Wrong password! / &#161;Contrase&#241;a incorrecta!';
+    input.value='';
+    input.style.borderColor='var(--red)';
+    setTimeout(()=>{if(input)input.style.borderColor='';},1000);
+  }
+}
+
+initQuiz();
+
+/* ==================== ACTIVE NAV ==================== */
+const allSec=document.querySelectorAll('section[id]');
+const navAs=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  allSec.forEach(s=>{if(s.getBoundingClientRect().top<=100)cur=s.id;});
+  navAs.forEach(a=>{a.style.background='';if(a.getAttribute('href')==='#'+cur)a.style.background='rgba(255,255,255,.3)';});
+},{passive:true});
+</script>
+</body>
+</html>
